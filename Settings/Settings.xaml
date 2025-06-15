@@ -1,0 +1,42 @@
+﻿<!-- ReSharper disable once MarkupAttributeTypo -->
+<UserControl x:Class="SimHub.iRacing.Twitch.Stats.Settings.SimHubIRacingTwitchStatsPluginUi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:SimHub.iRacing.Twitch.Stats"
+             xmlns:styles="clr-namespace:SimHub.Plugins.Styles;assembly=SimHub.Plugins"
+             xmlns:settings="clr-namespace:SimHub.iRacing.Twitch.Stats.Settings"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance settings:SimHubIRacingTwitchStatsPluginUiModel}">
+    <Grid>
+        <styles:SHSection Title="iRacing Twitch Stats Settings">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">Twitch Settings:</Label>
+
+                <Label Grid.Row="1" Grid.Column="0">Channel Name:</Label>
+                <TextBox Margin="4" Grid.Row="1" Grid.Column="1" Text="{Binding Path=TwitchChannelName}" />
+                
+                <Label Grid.Row="2" Grid.Column="0">Client ID:</Label>
+                <PasswordBox Margin="4" Grid.Row="2" Grid.Column="1" Password="{Binding Path=TwitchClientId}" />
+                
+                <Label Grid.Row="3" Grid.Column="0">Access Token:</Label>
+                <PasswordBox Margin="4" Grid.Row="3" Grid.Column="1" Password="{Binding Path=TwitchAccessToken}" />
+                
+                <styles:SHButtonPrimary Margin="4" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="Apply_Settings">Apply settings</styles:SHButtonPrimary>
+            </Grid>
+        </styles:SHSection>
+    </Grid>
+</UserControl>
