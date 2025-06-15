@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media;
 using GameReaderCommon;
-using GongSolutions.Wpf.DragDrop.Utilities;
 using IRacingReader;
 using iRacingSDK;
 using SimHub.iRacing.Twitch.Stats.Properties;
@@ -169,6 +168,11 @@ namespace SimHub.iRacing.Twitch.Stats
         {
             // Save settings
             this.SaveCommonSettings("GeneralSettings", Settings);
+
+            if (_twitchLiveMonitor != null)
+            {
+                _twitchLiveMonitor.EndLiveMonitor();
+            }
         }
 
         private Control _wpfSettingsControl;
@@ -201,6 +205,5 @@ namespace SimHub.iRacing.Twitch.Stats
             irData.Telemetry.TryGetValue(name, out var obj);
             return Convert.ToInt32(obj);
         }
-        
     }
 }

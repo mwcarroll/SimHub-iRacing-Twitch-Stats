@@ -30,10 +30,10 @@
                 <TextBox Margin="4" Grid.Row="1" Grid.Column="1" Text="{Binding Path=TwitchChannelName}" />
                 
                 <Label Grid.Row="2" Grid.Column="0">Client ID:</Label>
-                <PasswordBox Margin="4" Grid.Row="2" Grid.Column="1" Password="{Binding Path=TwitchClientId}" />
+                <PasswordBox Margin="4" Grid.Row="2" Grid.Column="1" Name="ClientId" PasswordChanged="PasswordBox_ClientIdChanged" />
                 
                 <Label Grid.Row="3" Grid.Column="0">Access Token:</Label>
-                <PasswordBox Margin="4" Grid.Row="3" Grid.Column="1" Password="{Binding Path=TwitchAccessToken}" />
+                <PasswordBox Margin="4" Grid.Row="3" Grid.Column="1" Name="AccessToken" PasswordChanged="PasswordBox_OnAccessTokenChanged" />
                 
                 <styles:SHButtonPrimary Margin="4" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="Apply_Settings">Apply settings</styles:SHButtonPrimary>
             </Grid>

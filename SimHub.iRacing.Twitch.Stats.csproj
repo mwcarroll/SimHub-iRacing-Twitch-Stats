@@ -82,9 +82,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RSC.iRacingExtraProperties">
-      <HintPath>$(SIMHUB_INSTALL_PATH)RSC.iRacingExtraProperties.dll</HintPath>
-    </Reference>
     <Reference Include="SimHub.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(SIMHUB_INSTALL_PATH)SimHub.Logging.dll</HintPath>
@@ -214,7 +211,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY /Y /R "$(TargetDir)\$(TargetName)*" "%25SIMHUB_INSTALL_PATH%25"
-XCOPY /Y /R "$(TargetDir)*" "%25SIMHUB_INSTALL_PATH%25"
+XCOPY /Y /R "$(TargetDir)TwitchLib.Api.*.dll" "%25SIMHUB_INSTALL_PATH%25"
 "%25SIMHUB_INSTALL_PATH%25\SimHubWPF.exe"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using TwitchLib.Api;
 using TwitchLib.Api.Services;
@@ -11,6 +12,8 @@ namespace SimHub.iRacing.Twitch.Stats
         private LiveStreamMonitorService _monitor;
         private TwitchAPI _api;
         
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        
         private string _channelName;
 
         public bool StreamLive { get; private set; }
@@ -18,6 +21,12 @@ namespace SimHub.iRacing.Twitch.Stats
         public TwitchLiveMonitor(string channelName, string clientId, string accessToken)
         {
             Task.Run(() => ConfigLiveMonitorAsync(channelName, clientId, accessToken));
+        }
+
+        public void EndLiveMonitor()
+        {
+            _monitor.Stop();
+            _cancellationTokenSource.Cancel();
         }
 
         private async Task ConfigLiveMonitorAsync(string channelName, string clientId, string accessToken)
@@ -43,7 +52,7 @@ namespace SimHub.iRacing.Twitch.Stats
 
             _monitor.Start(); //Keep at the end!
 
-            await Task.Delay(-1);
+            await Task.Delay(-1, _cancellationTokenSource.Token);
         }
 
         private void Monitor_OnStreamOnline(object sender, OnStreamOnlineArgs e)

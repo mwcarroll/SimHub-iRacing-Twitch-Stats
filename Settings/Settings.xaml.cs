@@ -20,6 +20,9 @@ namespace SimHub.iRacing.Twitch.Stats.Settings
                 TwitchClientId = simHubIRacingTwitchStatsPlugin.Settings.TwitchClientId,
                 TwitchAccessToken = simHubIRacingTwitchStatsPlugin.Settings.TwitchAccessToken
             };
+            
+            ClientId.Password = simHubIRacingTwitchStatsPlugin.Settings.TwitchClientId;
+            AccessToken.Password = simHubIRacingTwitchStatsPlugin.Settings.TwitchAccessToken;
 
             DataContext = Model;
         }
@@ -29,6 +32,16 @@ namespace SimHub.iRacing.Twitch.Stats.Settings
             SimHubIRacingTwitchStatsPlugin.Settings.TwitchChannelName = Model.TwitchChannelName;
             SimHubIRacingTwitchStatsPlugin.Settings.TwitchClientId = Model.TwitchClientId;
             SimHubIRacingTwitchStatsPlugin.Settings.TwitchAccessToken = Model.TwitchAccessToken;
+        }
+        
+        private void PasswordBox_ClientIdChanged(object sender, RoutedEventArgs e)
+        {
+            Model.TwitchClientId = ClientId.Password;
+        }
+
+        private void PasswordBox_OnAccessTokenChanged(object sender, RoutedEventArgs e)
+        {
+            Model.TwitchAccessToken = AccessToken.Password;
         }
     }
 }
